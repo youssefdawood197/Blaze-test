@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class DynamicBackground extends StatefulWidget {
-  final Widget child;
+  final Widget content;
 
-  const DynamicBackground({required this.child, Key? key}) : super(key: key);
+  const DynamicBackground({required this.content, Key? key}) : super(key: key);
 
   @override
   _DynamicBackgroundState createState() => _DynamicBackgroundState();
@@ -104,9 +104,8 @@ class _DynamicBackgroundState extends State<DynamicBackground> with SingleTicker
         ),
 
         // Content overlay
-        Positioned.fill(
-          child: widget.child,
-        ),
+        widget.content,
+
       ],
     );
   }
@@ -154,28 +153,5 @@ class _Ball {
     if (position.dy <= 0 || position.dy >= screenSize.height - 50) {
       velocity = Offset(velocity.dx, -velocity.dy);
     }
-  }
-}
-
-// Usage in a scaffold page
-class LoginPage extends StatelessWidget {
-  static const String routeName = 'Login';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: DynamicBackground(
-        child: Center(
-          child: Text(
-            'Login Page',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }
