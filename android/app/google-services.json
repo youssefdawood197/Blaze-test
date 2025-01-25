@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "402831366109",
+    "project_id": "blaze-test-eba62",
+    "storage_bucket": "blaze-test-eba62.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402831366109:android:0472ce431f89c6f0214834",
+        "android_client_info": {
+          "package_name": "com.Blazetest.test_social_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvAKSdJ0zfP_ZP_roy6DivP4VEuvc31G8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

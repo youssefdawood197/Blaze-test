@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:test_social_store/Base%20Scaffold/BaseScaffold.dart';
 
