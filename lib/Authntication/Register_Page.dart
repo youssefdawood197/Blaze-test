@@ -107,6 +107,9 @@ class _RegisterFormState extends State<RegisterForm> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
+
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -128,6 +131,9 @@ class _RegisterFormState extends State<RegisterForm> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
+
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -149,6 +155,9 @@ class _RegisterFormState extends State<RegisterForm> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
+
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -170,6 +179,9 @@ class _RegisterFormState extends State<RegisterForm> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
+
             ),
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
@@ -195,6 +207,9 @@ class _RegisterFormState extends State<RegisterForm> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
+
             ),
             obscureText: true,
             validator: (value) {
@@ -220,6 +235,9 @@ class _RegisterFormState extends State<RegisterForm> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
+
             ),
             obscureText: true,
             validator: (value) {
@@ -251,6 +269,9 @@ class _RegisterFormState extends State<RegisterForm> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
+
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -272,6 +293,9 @@ class _RegisterFormState extends State<RegisterForm> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
+
             ),
             keyboardType: TextInputType.phone,
             validator: (value) {
@@ -283,6 +307,7 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
           SizedBox(height: 16.0),
           // Birth Date Field
+// Birth Date Field
           TextButton(
             onPressed: () async {
               final pickedDate = await showDatePicker(
@@ -300,7 +325,7 @@ class _RegisterFormState extends State<RegisterForm> {
             child: Text(
               _birthDate == null
                   ? 'Select Birth Date'
-                  : 'Birth Date: ${_birthDate!.toLocal()}'.split(' ')[0],
+                  : 'Birth Date: ${_birthDate!.day.toString().padLeft(2, '0')}-${_birthDate!.month.toString().padLeft(2, '0')}-${_birthDate!.year}',
               style: TextStyle(color: Colors.white),
             ),
           ),

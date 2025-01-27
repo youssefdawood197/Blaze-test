@@ -20,7 +20,6 @@ class Login_Page extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true, // Centers the title
-
       ),
       body: DynamicBackground(
         child: Center(
@@ -81,10 +80,17 @@ class _LoginFormState extends State<LoginForm> {
           // Email Field
           TextFormField(
             controller: _emailController,
+            style: TextStyle(color: Colors.white), // Input text color set to white
             decoration: InputDecoration(
               labelText: 'Email',
               hintText: 'Enter your email',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white), // Label color
+              hintStyle: TextStyle(color: Colors.white70), // Hint color
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0), // Rounded corners
+              ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
             ),
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
@@ -101,10 +107,17 @@ class _LoginFormState extends State<LoginForm> {
           // Password Field
           TextFormField(
             controller: _passwordController,
+            style: TextStyle(color: Colors.white), // Input text color set to white
             decoration: InputDecoration(
               labelText: 'Password',
               hintText: 'Enter your password',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white), // Label color
+              hintStyle: TextStyle(color: Colors.white70), // Hint color
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0), // Rounded corners
+              ),
+              filled: true, // Fill color for input field
+              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
             ),
             obscureText: true,
             validator: (value) {
