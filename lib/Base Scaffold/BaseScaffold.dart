@@ -36,7 +36,7 @@ class _DynamicBackgroundState extends State<DynamicBackground> with SingleTicker
     // Initialize balls when screen size is available
     if (_balls == null) {
       final screenSize = MediaQuery.of(context).size;
-      _balls = List.generate(20, (_) {
+      _balls = List.generate(500, (_) {
         return _Ball(
           color: _randomColor(),
           position: Offset(

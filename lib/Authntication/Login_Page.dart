@@ -4,11 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:test_social_store/Base%20Scaffold/BaseScaffold.dart';
 
 class Login_Page extends StatelessWidget {
+  static const routeName = 'LoginPage'; // Define the route name for this page
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      extendBodyBehindAppBar: true, // Ensures the body extends behind the AppBar
+      appBar: AppBar(
+        backgroundColor: Colors.transparent, // Transparent background
+        elevation: 0, // Removes shadow
+        title: Text(
+          "Welcome", // Title of the AppBar
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true, // Centers the title
+
+      ),
       body: DynamicBackground(
         child: Center(
           child: SingleChildScrollView(
@@ -54,6 +67,7 @@ class _LoginFormState extends State<LoginForm> {
 
   void _navigateToSignUp() {
     // Implement navigation logic to the Sign-Up page
+    Navigator.pushNamed(context, '/register');
     print("Navigating to Sign Up page...");
   }
 

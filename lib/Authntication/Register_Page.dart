@@ -8,21 +8,39 @@ class Register_Page extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      extendBodyBehindAppBar: true, // Ensures the body extends behind the AppBar
+      appBar: AppBar(
+        backgroundColor: Colors.transparent, // Transparent background
+        elevation: 0, // Removes shadow
+        title: Text(
+          "Join Blaze", // Title of the AppBar
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true, // Centers the title
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+      ),
       body: DynamicBackground(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
-              width: screenWidth,
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
-                child: Container(
-                  padding: EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(144, 19, 19, 19),
-                    borderRadius: BorderRadius.circular(10.0),
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + kToolbarHeight), // Adds padding to account for AppBar
+          child: Center(
+            child: SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+                width: screenWidth,
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
+                  child: Container(
+                    padding: EdgeInsets.all(20.0),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(144, 19, 19, 19),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: SingleChildScrollView(
+                      child: RegisterForm(), // Scrollable Form
+                    ),
                   ),
-                  child: RegisterForm(),
                 ),
               ),
             ),
@@ -32,7 +50,6 @@ class Register_Page extends StatelessWidget {
     );
   }
 }
-
 class RegisterForm extends StatefulWidget {
   @override
   _RegisterFormState createState() => _RegisterFormState();
@@ -81,10 +98,15 @@ class _RegisterFormState extends State<RegisterForm> {
           // First Name Field
           TextFormField(
             controller: _firstNameController,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               labelText: 'First Name',
               hintText: 'Enter your first name',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white),
+              hintStyle: TextStyle(color: Colors.white70),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -97,10 +119,15 @@ class _RegisterFormState extends State<RegisterForm> {
           // Last Name Field
           TextFormField(
             controller: _lastNameController,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               labelText: 'Last Name',
               hintText: 'Enter your last name',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white),
+              hintStyle: TextStyle(color: Colors.white70),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -113,10 +140,15 @@ class _RegisterFormState extends State<RegisterForm> {
           // Username Field
           TextFormField(
             controller: _usernameController,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               labelText: 'Username',
               hintText: 'Enter your username',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white),
+              hintStyle: TextStyle(color: Colors.white70),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -129,10 +161,15 @@ class _RegisterFormState extends State<RegisterForm> {
           // Email Field
           TextFormField(
             controller: _emailController,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               labelText: 'Email',
               hintText: 'Enter your email',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white),
+              hintStyle: TextStyle(color: Colors.white70),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
@@ -149,10 +186,15 @@ class _RegisterFormState extends State<RegisterForm> {
           // Password Field
           TextFormField(
             controller: _passwordController,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               labelText: 'Password',
               hintText: 'Enter your password',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white),
+              hintStyle: TextStyle(color: Colors.white70),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
             obscureText: true,
             validator: (value) {
@@ -169,10 +211,15 @@ class _RegisterFormState extends State<RegisterForm> {
           // Confirm Password Field
           TextFormField(
             controller: _confirmPasswordController,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               labelText: 'Confirm Password',
               hintText: 'Re-enter your password',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white),
+              hintStyle: TextStyle(color: Colors.white70),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
             obscureText: true,
             validator: (value) {
@@ -185,11 +232,12 @@ class _RegisterFormState extends State<RegisterForm> {
           SizedBox(height: 16.0),
           // Gender Field
           DropdownButtonFormField<String>(
+            dropdownColor: Color.fromARGB(240, 19, 19, 19),
             value: _gender,
             items: ['Male', 'Female', 'Other']
                 .map((gender) => DropdownMenuItem(
               value: gender,
-              child: Text(gender),
+              child: Text(gender, style: TextStyle(color: Colors.white)),
             ))
                 .toList(),
             onChanged: (value) {
@@ -199,7 +247,10 @@ class _RegisterFormState extends State<RegisterForm> {
             },
             decoration: InputDecoration(
               labelText: 'Gender',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -212,10 +263,15 @@ class _RegisterFormState extends State<RegisterForm> {
           // Phone Number Field
           TextFormField(
             controller: _phoneNumberController,
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               labelText: 'Phone Number',
               hintText: 'Enter your phone number',
-              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white),
+              hintStyle: TextStyle(color: Colors.white70),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
             keyboardType: TextInputType.phone,
             validator: (value) {
@@ -245,6 +301,7 @@ class _RegisterFormState extends State<RegisterForm> {
               _birthDate == null
                   ? 'Select Birth Date'
                   : 'Birth Date: ${_birthDate!.toLocal()}'.split(' ')[0],
+              style: TextStyle(color: Colors.white),
             ),
           ),
           SizedBox(height: 16.0),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:test_social_store/Authntication/Login_Page.dart';
 
+import 'Authntication/Register_Page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -20,6 +22,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: Login_Page(),
-    );
+      routes: {
+        Login_Page.routeName: (context) => Login_Page(),
+        '/register': (context) => Register_Page(),
+      },    );
   }
 }
