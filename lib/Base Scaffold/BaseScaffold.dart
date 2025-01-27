@@ -132,7 +132,7 @@ class _DynamicBackgroundState extends State<DynamicBackground> with SingleTicker
   }
   // Helper to generate random colors
   Color _randomColor() {
-    return [Colors.purple, Colors.cyan, Colors.blue, Colors.redAccent][_random.nextInt(4)];
+    return [Colors.black, Colors.purple, Colors.purple, Colors.black][_random.nextInt(4)];
   }
 }
 
