@@ -86,6 +86,7 @@ class _LoginFormState extends State<LoginForm> {
               hintText: 'Enter your email',
               labelStyle: TextStyle(color: Colors.white), // Label color
               hintStyle: TextStyle(color: Colors.white70), // Hint color
+              prefixIcon: Icon(Icons.email, color: Colors.white), // Add email icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0), // Rounded corners
               ),
@@ -113,6 +114,7 @@ class _LoginFormState extends State<LoginForm> {
               hintText: 'Enter your password',
               labelStyle: TextStyle(color: Colors.white), // Label color
               hintStyle: TextStyle(color: Colors.white70), // Hint color
+              prefixIcon: Icon(Icons.lock, color: Colors.white), // Add lock icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0), // Rounded corners
               ),

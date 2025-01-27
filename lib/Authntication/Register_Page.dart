@@ -37,9 +37,7 @@ class Register_Page extends StatelessWidget {
                       color: Color.fromARGB(144, 19, 19, 19),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: SingleChildScrollView(
-                      child: RegisterForm(), // Scrollable Form
-                    ),
+                    child: RegisterForm(),
                   ),
                 ),
               ),
@@ -50,6 +48,7 @@ class Register_Page extends StatelessWidget {
     );
   }
 }
+
 class RegisterForm extends StatefulWidget {
   @override
   _RegisterFormState createState() => _RegisterFormState();
@@ -104,12 +103,12 @@ class _RegisterFormState extends State<RegisterForm> {
               hintText: 'Enter your first name',
               labelStyle: TextStyle(color: Colors.white),
               hintStyle: TextStyle(color: Colors.white70),
+              prefixIcon: Icon(Icons.person, color: Colors.white), // Add icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              filled: true, // Fill color for input field
-              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
-
+              filled: true,
+              fillColor: Color.fromARGB(20, 255, 255, 255),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -128,12 +127,12 @@ class _RegisterFormState extends State<RegisterForm> {
               hintText: 'Enter your last name',
               labelStyle: TextStyle(color: Colors.white),
               hintStyle: TextStyle(color: Colors.white70),
+              prefixIcon: Icon(Icons.person_outline, color: Colors.white), // Add icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              filled: true, // Fill color for input field
-              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
-
+              filled: true,
+              fillColor: Color.fromARGB(20, 255, 255, 255),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -152,12 +151,12 @@ class _RegisterFormState extends State<RegisterForm> {
               hintText: 'Enter your username',
               labelStyle: TextStyle(color: Colors.white),
               hintStyle: TextStyle(color: Colors.white70),
+              prefixIcon: Icon(Icons.account_circle, color: Colors.white), // Add icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              filled: true, // Fill color for input field
-              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
-
+              filled: true,
+              fillColor: Color.fromARGB(20, 255, 255, 255),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -176,12 +175,12 @@ class _RegisterFormState extends State<RegisterForm> {
               hintText: 'Enter your email',
               labelStyle: TextStyle(color: Colors.white),
               hintStyle: TextStyle(color: Colors.white70),
+              prefixIcon: Icon(Icons.email, color: Colors.white), // Add icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              filled: true, // Fill color for input field
-              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
-
+              filled: true,
+              fillColor: Color.fromARGB(20, 255, 255, 255),
             ),
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
@@ -204,12 +203,12 @@ class _RegisterFormState extends State<RegisterForm> {
               hintText: 'Enter your password',
               labelStyle: TextStyle(color: Colors.white),
               hintStyle: TextStyle(color: Colors.white70),
+              prefixIcon: Icon(Icons.lock, color: Colors.white), // Add icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              filled: true, // Fill color for input field
-              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
-
+              filled: true,
+              fillColor: Color.fromARGB(20, 255, 255, 255),
             ),
             obscureText: true,
             validator: (value) {
@@ -232,12 +231,12 @@ class _RegisterFormState extends State<RegisterForm> {
               hintText: 'Re-enter your password',
               labelStyle: TextStyle(color: Colors.white),
               hintStyle: TextStyle(color: Colors.white70),
+              prefixIcon: Icon(Icons.lock_outline, color: Colors.white), // Add icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              filled: true, // Fill color for input field
-              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
-
+              filled: true,
+              fillColor: Color.fromARGB(20, 255, 255, 255),
             ),
             obscureText: true,
             validator: (value) {
@@ -266,12 +265,12 @@ class _RegisterFormState extends State<RegisterForm> {
             decoration: InputDecoration(
               labelText: 'Gender',
               labelStyle: TextStyle(color: Colors.white),
+              prefixIcon: Icon(Icons.person_search, color: Colors.white), // Add icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              filled: true, // Fill color for input field
-              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
-
+              filled: true,
+              fillColor: Color.fromARGB(20, 255, 255, 255),
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -290,12 +289,12 @@ class _RegisterFormState extends State<RegisterForm> {
               hintText: 'Enter your phone number',
               labelStyle: TextStyle(color: Colors.white),
               hintStyle: TextStyle(color: Colors.white70),
+              prefixIcon: Icon(Icons.phone, color: Colors.white), // Add icon
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              filled: true, // Fill color for input field
-              fillColor: Color.fromARGB(20, 255, 255, 255), // Light opacity
-
+              filled: true,
+              fillColor: Color.fromARGB(20, 255, 255, 255),
             ),
             keyboardType: TextInputType.phone,
             validator: (value) {
@@ -307,7 +306,6 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
           SizedBox(height: 16.0),
           // Birth Date Field
-// Birth Date Field
           TextButton(
             onPressed: () async {
               final pickedDate = await showDatePicker(
