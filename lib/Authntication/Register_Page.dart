@@ -1,6 +1,9 @@
 import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:test_social_store/Base%20Scaffold/BaseScaffold.dart';
+
+import 'firebase_auth_handler.dart';
 
 class Register_Page extends StatelessWidget {
   @override
@@ -66,8 +69,18 @@ class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController _phoneNumberController = TextEditingController();
   DateTime? _birthDate;
   String? _gender;
-
-  void _submitForm() {
+  void testFirestore() async {
+    try {
+      await FirebaseFirestore.instance.collection('test').add({
+        'message': 'Testing Firestore connection',
+        'timestamp': DateTime.now(),
+      });
+      print('Firestore write successful');
+    } catch (e) {
+      print('Firestore write failed: $e');
+    }
+  }
+  void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       if (_passwordController.text != _confirmPasswordController.text) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -76,17 +89,31 @@ class _RegisterFormState extends State<RegisterForm> {
         return;
       }
 
-      // Perform registration logic here
-      print('First Name: ${_firstNameController.text}');
-      print('Last Name: ${_lastNameController.text}');
-      print('Username: ${_usernameController.text}');
-      print('Email: ${_emailController.text}');
-      print('Phone Number: ${_phoneNumberController.text}');
-      print('Gender: $_gender');
-      print('Birth Date: $_birthDate');
+      FirebaseAuthHandler authHandler = FirebaseAuthHandler();
+
+      // Call Firebase Authentication Handler
+      String? result = await authHandler.registerUser(
+        firstName: _firstNameController.text,
+        lastName: _lastNameController.text,
+        email: _emailController.text,
+        username: _usernameController.text,
+        gender: _gender!,
+        phoneNumber: _phoneNumberController.text,
+        password: _passwordController.text,
+      );
+
+      if (result != null && result.length == 28) { // Firebase UID length check
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Registration successful!")),
+        );
+        Navigator.pop(context); // Navigate to login page or home
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Registration failed: $result")),
+        );
+      }
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -310,7 +337,7 @@ class _RegisterFormState extends State<RegisterForm> {
             onPressed: () async {
               final pickedDate = await showDatePicker(
                 context: context,
-                initialDate: DateTime(2000),
+                initialDate: DateTime.now(),
                 firstDate: DateTime(1900),
                 lastDate: DateTime.now(),
               );
@@ -332,6 +359,12 @@ class _RegisterFormState extends State<RegisterForm> {
           ElevatedButton(
             onPressed: _submitForm,
             child: Text('Register'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              testFirestore();
+            },
+            child: Text('Test Firestore Connection'),
           ),
         ],
       ),

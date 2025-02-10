@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:test_social_store/Authntication/Login_Page.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'Authntication/Login_Page.dart';
 import 'Authntication/Register_Page.dart';
-
-void main() {
+import 'package:firebase_auth/firebase_auth.dart';
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -17,7 +20,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
       routes: {
         Login_Page.routeName: (context) => Login_Page(),
         '/register': (context) => Register_Page(),
-      },    );
+      },
+    );
   }
 }

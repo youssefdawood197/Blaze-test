@@ -67,7 +67,6 @@ class _LoginFormState extends State<LoginForm> {
   void _navigateToSignUp() {
     // Implement navigation logic to the Sign-Up page
     Navigator.pushNamed(context, '/register');
-    print("Navigating to Sign Up page...");
   }
 
   @override
